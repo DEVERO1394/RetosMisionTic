@@ -2,6 +2,7 @@ package Controller;
 
 import Model.Admin;
 import Model.Category;
+import Model.Score;
 import Service.AdminService;
 import Service.CategoryService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -33,5 +34,16 @@ public class AdminController {
     public Admin save(@RequestBody Admin admin){
 
         return adminService.save(admin);
+    }
+    @PutMapping ("/update")
+    @ResponseStatus(HttpStatus.CREATED)
+    public Admin update(@RequestBody Admin admin){
+        return adminService.update(admin);
+    }
+
+    @DeleteMapping("/{id}")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    public Boolean delete(@PathVariable("id") int id){
+        return adminService.delete(id);
     }
 }

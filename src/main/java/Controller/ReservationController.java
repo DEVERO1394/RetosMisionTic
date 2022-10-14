@@ -1,6 +1,7 @@
 package Controller;
 
 
+import Model.Message;
 import Model.Reservation;
 import Service.ReservationService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,5 +33,16 @@ public class ReservationController {
     public Reservation save(@RequestBody Reservation reservation){
 
         return reservationService.save(reservation);
+    }
+    @PutMapping ("/update")
+    @ResponseStatus(HttpStatus.CREATED)
+    public Reservation update(@RequestBody Reservation reservation){
+        return reservationService.update(reservation);
+    }
+
+    @DeleteMapping("/{id}")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    public Boolean delete(@PathVariable("id") int id){
+        return reservationService.delete(id);
     }
 }
